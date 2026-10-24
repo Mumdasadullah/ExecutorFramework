@@ -69,3 +69,5 @@ CompletableFuture has runasync function which takes runnable.
 
 CompletableFuture provide chaining by methods thenApply thenAccept thenRun
 
+CompletableFuture have one more function named thenCombine which combine result of more than one completablefuture.
+

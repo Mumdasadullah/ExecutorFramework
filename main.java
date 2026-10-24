@@ -196,8 +196,19 @@ public static void main(String[] args) {
 
 
     // CompletableFuture thenRun Method
-    CompletableFuture<Void> future =
-        CompletableFuture
-            .supplyAsync(() -> 10 + 10)
-            .thenRun(() -> System.out.println("Done"));
+    // CompletableFuture<Void> future =
+    //     CompletableFuture
+    //         .supplyAsync(() -> 10 + 10)
+    //         .thenRun(() -> System.out.println("Done"));
+
+
+    // then Combine Method
+
+    CompletableFuture<Integer> future1 = 
+        CompletableFuture.supplyAsync(() -> 10 + 15);
+
+    CompletableFuture<Integer> future2 = 
+        CompletableFuture.supplyAsync(() -> 20 + 5);
+
+    future1.thenCombine(future2, (a, b) -> a + b).thenAccept(result -> System.out.println(result));
 }
