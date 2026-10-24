@@ -71,3 +71,6 @@ CompletableFuture provide chaining by methods thenApply thenAccept thenRun
 
 CompletableFuture have one more function named thenCombine which combine result of more than one completablefuture.
 
+CompletableFuture uses Fork-Join Pool internally.
+
+Fork-Join Pool has one extra component than normal executor; that component is each Thread have their own Queue which store the subtasks.
