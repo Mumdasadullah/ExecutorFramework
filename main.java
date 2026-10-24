@@ -113,16 +113,52 @@ public static void main(String[] args) {
     // executor.shutdown();
 
     // Scheduled Thread Pool
-    ScheduledExecutorService schedulor = Executors.newScheduledThreadPool(2);
+    // ScheduledExecutorService schedulor = Executors.newScheduledThreadPool(2);
 
-    // for (int i = 1; i <= 10; i++) {
+    // // for (int i = 1; i <= 10; i++) {
+        
+    // //     final int taskId = i;
+
+    // schedulor.schedule(() -> {
+    //     System.out.println("Task is performed");
+    // }, 2, TimeUnit.SECONDS);
+
+    // schedulor.scheduleAtFixedRate(() -> {
+    //     System.out.println("Task is performed");
+    // }, 0, 2, TimeUnit.SECONDS);
+    // // }
+
+    // schedulor.shutdown();
+
+    // Cached Thread Pool
+    // ExecutorService executor = Executors.newCachedThreadPool();
+
+    // for (int i = 1; i <= 5; i++) {
         
     //     final int taskId = i;
 
-    schedulor.scheduleAtFixedRate(() -> {
-        System.out.println("Task is performed");
-    }, 0, 2, TimeUnit.SECONDS);
+    //     executor.execute(() -> {
+    //         System.out.println("Task " + taskId + " is performed by " +
+    //             Thread.currentThread().getName()
+    //         );
+    //     });
     // }
 
-    schedulor.shutdown();
+    // executor.shutdown();
+
+    // Single Thread Pool
+    ExecutorService executor = Executors.newSingleThreadExecutor();
+
+    for (int i = 1; i <= 5; i++) {
+        
+        final int taskId = i;
+
+        executor.execute(() -> {
+            System.out.println("Task " + taskId + " is performed by"
+                + Thread.currentThread().getName()
+            );
+        });
+    }
+
+    executor.shutdown();
 }
