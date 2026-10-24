@@ -24,3 +24,20 @@ When we initialize the thread so no thread present in the pool
 When tasks arrive only then pool create thread to perform task.
 if the two threads are busy in performing tasks and new task arrive so place it in Queue.
 after completely filling the Queue a new task arrived so pool created a new thread t3 for handling task from Queue
+
+Types Of Thread Pool:
+1_ ArrayBlockingQueue<> -> Internally use Array Data Structure and it is limited in size
+2_ LinkedBlockingQueue<> -> Internally use Linked List Data Structure and it is unlimited in size
+
+Types Of Thread Pool:
+1_ FixedThreadPool -> fixed number of threads + Unlimited size of Queue. Issue is Memory Issue
+2_ CachedThreadPool -> every time create a new thread for new tasks. Issue is memory issue
+3_ SingleThreadedPool -> 1 thread + Queue; Serializable best fit for Logging.
+4_ ScheduledThreadPool -> Run Task in Future; schedule and scheduleAtFixedRate are its methods.
+
+RejecttionPolicy:
+These policies applied when thread pool have maximum threads and queue is full.
+
+1_ Abort Policy -> Throws Exception when a new task arrived.
+2_ Discard Policy -> It just discard silently and not throw any exception
+3_ DiscardOldestPolicy -> We discard the oldest task from the queue and put a new task in the queue.
