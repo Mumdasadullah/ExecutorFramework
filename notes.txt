@@ -1,0 +1,26 @@
+Runnable is used for concurrent thread.
+Runnable never return something and never take argument.
+Callable just as runnable but it return something.
+executor.execute takes runnable
+executor.submit takes Callable
+Runnable have function named run
+Callable have function named call
+Runable is a 
+Callable is a consumer
+
+In execute method exception lost; we can't catch the exception raised from execute method
+In submit method exception not lost; we can catch the exception raised from submit method
+
+Shutdown function did not take any new tasks and after running tasks complete their work it shut it's thread pool
+
+ThreadPoolExecutor constructor takes 5 arguments
+1_ int currentPoolSize -> number of threads should be present when initialize the thread pool
+2_ int maxPoolSize -> if the number of requests then how many other threads pool can create
+3_ int keepAlive -> after how many time in int a newly created thread should be remove for being idle
+4_ TimeUnit unit -> related to keepAlive; sec or min or hours
+5_ BlockingQueue<Runnable> worker -> A Queue to handle tasks
+
+When we initialize the thread so no thread present in the pool
+When tasks arrive only then pool create thread to perform task.
+if the two threads are busy in performing tasks and new task arrive so place it in Queue.
+after completely filling the Queue a new task arrived so pool created a new thread t3 for handling task from Queue
