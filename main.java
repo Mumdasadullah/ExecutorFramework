@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -147,18 +148,56 @@ public static void main(String[] args) {
     // executor.shutdown();
 
     // Single Thread Pool
-    ExecutorService executor = Executors.newSingleThreadExecutor();
+    // ExecutorService executor = Executors.newSingleThreadExecutor();
 
-    for (int i = 1; i <= 5; i++) {
+    // for (int i = 1; i <= 5; i++) {
         
-        final int taskId = i;
+    //     final int taskId = i;
 
-        executor.execute(() -> {
-            System.out.println("Task " + taskId + " is performed by"
-                + Thread.currentThread().getName()
-            );
-        });
-    }
+    //     executor.execute(() -> {
+    //         System.out.println("Task " + taskId + " is performed by"
+    //             + Thread.currentThread().getName()
+    //         );
+    //     });
+    // }
 
-    executor.shutdown();
+    // executor.shutdown();
+
+    // Completable Future Code
+    // CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> 10 * 20);
+
+    // try {
+    //     System.out.println(future.get());
+    // } catch (Exception e) {
+    //     // TODO: handle exception
+    // }
+
+    // CompletableFuture thenApply Method
+    // CompletableFuture<Integer> future =
+    //     CompletableFuture
+    //         .supplyAsync(() -> 10 * 20)
+    //         .thenApply(result -> result + 50)
+    //         .thenApply(result -> result + 50);
+
+    // try {
+    //     System.out.println(future.get());
+    // } catch (Exception e) {
+    //     // TODO: handle exception
+    // }
+
+
+    // CompletableFuture thenAccept Method
+    // CompletableFuture<Void> future =
+    //     CompletableFuture
+    //         .supplyAsync(() -> 10 * 20)
+    //         .thenApply(result -> result + 50)
+    //         .thenApply(result -> result + 50)
+    //         .thenAccept(result -> System.out.println(result / 2));
+
+
+    // CompletableFuture thenRun Method
+    CompletableFuture<Void> future =
+        CompletableFuture
+            .supplyAsync(() -> 10 + 10)
+            .thenRun(() -> System.out.println("Done"));
 }

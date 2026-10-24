@@ -41,3 +41,31 @@ These policies applied when thread pool have maximum threads and queue is full.
 1_ Abort Policy -> Throws Exception when a new task arrived.
 2_ Discard Policy -> It just discard silently and not throw any exception
 3_ DiscardOldestPolicy -> We discard the oldest task from the queue and put a new task in the queue.
+
+Future Type methods:
+
+get -> it block the main thread and wait for the result to come.
+isdone -> return true or false; if task completed it return true otherwise false.
+cancel -> cancel take one argument of type bool; cancel task; if task in queue so it cancel the task; if it is in running state so it checks parameter if true so interrupt running task and canel if false then it let the task be finished.
+iscancelled -> check whether your task is cancelled or not?
+
+Future Type comes from executor.submit();
+
+submit funtion have overloaded methods.
+submit can take callable only.
+submit can take runnable only.
+submit can take runnable with predefined result which return result when task completed.
+
+Future Type Limitations:
+
+1_ Blocking nature:  get Method block the main thread and wait for result.
+2_ Chaining / Connect multiple result is not possible in Future Type.
+
+CompletableFuture is an advance version of Future Type.
+
+CompletableFuture internally maintain the executor / thread pool.
+CompletableFuture has supplyasync function which takes callable.
+CompletableFuture has runasync function which takes runnable.
+
+CompletableFuture provide chaining by methods thenApply thenAccept thenRun
+
